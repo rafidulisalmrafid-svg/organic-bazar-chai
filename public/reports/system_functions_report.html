@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অর্গানিক বাজার চাই — সম্পূর্ণ সিস্টেম ফাংশন ও ফিচার ডিরেক্টরি</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 14mm 16mm 16mm 16mm;
+            @bottom-right {
+                content: "পৃষ্ঠা " counter(page);
+                font-family: 'Hind Siliguri', sans-serif;
+                font-size: 8.5pt;
+                color: #6B7280;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1F2937;
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            font-size: 9.5pt;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .avoid-break {
+            page-break-inside: avoid;
+        }
+
+        /* Cover Page */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 15px 15px 15px;
+            text-align: center;
+        }
+
+        .cover-header {
+            margin-top: 30px;
+        }
+
+        .logo-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            padding: 16px 26px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(27, 77, 62, 0.12);
+            border: 1px solid #E5E7EB;
+            margin-bottom: 20px;
+        }
+
+        .logo-box img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            font-size: 30pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .brand-subtitle {
+            font-size: 13.5pt;
+            color: #C05621;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .report-badge {
+            display: inline-block;
+            background: #EBF8F2;
+            color: #1B4D3E;
+            border: 1px solid #B7E4CF;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            font-size: 9.5pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .cover-hero-card {
+            background: linear-gradient(135deg, #1B4D3E 0%, #0F3026 100%);
+            color: #FFFFFF;
+            padding: 32px 28px;
+            border-radius: 20px;
+            margin: 25px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(27, 77, 62, 0.2);
+            text-align: left;
+        }
+
+        .cover-hero-card h2 {
+            font-size: 17pt;
+            font-weight: 700;
+            color: #FDFCFA;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .cover-hero-card p {
+            font-size: 10pt;
+            color: #D1E7DD;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 20px;
+            text-align: left;
+        }
+
+        .meta-item .label {
+            font-size: 8pt;
+            color: #6B7280;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .meta-item .value {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #111827;
+            margin-top: 2px;
+        }
+
+        /* Headings */
+        h1.section-title {
+            font-size: 16pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            border-bottom: 2px solid #EBF8F2;
+            padding-bottom: 6px;
+            margin-top: 20px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2.part-title {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            background: #F4FBF7;
+            border-left: 4px solid #1B4D3E;
+            padding: 6px 12px;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Feature items container */
+        .feature-list {
+            margin-bottom: 14px;
+        }
+
+        .feature-item {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            page-break-inside: avoid;
+        }
+
+        .feature-item.highlight {
+            border-left: 3px solid #1B4D3E;
+            background: #FAFCFB;
+        }
+
+        .feature-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .feature-title {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: #DEF7EC;
+            color: #03543F;
+            font-size: 7.5pt;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+
+        .feature-desc {
+            font-size: 9pt;
+            color: #4B5563;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        /* Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            page-break-inside: avoid;
+        }
+
+        .card h4 {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            margin-bottom: 4px;
+        }
+
+        .card p {
+            font-size: 8.5pt;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 16px 0;
+            font-size: 8.5pt;
+            page-break-inside: avoid;
+        }
+
+        th {
+            background: #1B4D3E;
+            color: #FFFFFF;
+            text-align: left;
+            padding: 6px 10px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #E5E7EB;
+            color: #374151;
+        }
+
+        tr:nth-child(even) {
+            background: #F9FAFB;
+        }
+
+        .footer-note {
+            margin-top: 24px;
+            padding: 12px;
+            background: #F3F4F6;
+            border-radius: 10px;
+            font-size: 8pt;
+            color: #6B7280;
+            text-align: center;
+            border: 1px dashed #D1D5DB;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COVER PAGE -->
+    <div class="cover page-break">
+        <div class="cover-header">
+            <div class="logo-box">
+                <img src="file:///C:/Users/USER/.gemini/antigravity-ide/scratch/ecommerce/public/images/logo.png" alt="অর্গানিক বাজার চাই">
+            </div>
+            <div class="brand-title">অর্গানিক বাজার চাই</div>
+            <div class="brand-subtitle">খাঁটি প্রাকৃতিক পণ্যের হাট (Organic & Hill Marketplace)</div>
+            <span class="report-badge">Complete System Functions & Features Directory</span>
+        </div>
+
+        <div class="cover-hero-card">
+            <h2>সিস্টেমে চালু থাকা সকল ফাংশন ও ফিচারের পূর্ণাঙ্গ ডিরেক্টরি</h2>
+            <p>
+                ক্রেতা ও ভোক্তাদের জন্য দ্রুতগতির দ্বিভাষিক ইন্টারফেস, আধুনিক স্লাইডার, রিয়েল-টাইম সার্চ, ফিল্টারিং ও নিরাপদ চেকআউট থেকে শুরু করে সুপার অ্যাডমিনের সেন্ট্রাল অ্যাট্রিবিউট/ইউনিট ম্যানেজমেন্ট, সেফটি গার্ড এবং ভেন্ডর অনবোর্ডিং পর্যন্ত সকল সক্রিয় ফাংশনের বিস্তারিত বিবরণ।
+            </p>
+        </div>
+
+        <div class="cover-meta">
+            <div class="meta-item">
+                <div class="label">প্ল্যাটফর্ম টাইপ</div>
+                <div class="value">Multi-Vendor E-Commerce</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">দ্বিভাষিক ফ্রেমওয়ার্ক</div>
+                <div class="value">বাংলা ও English (Dual)</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">সিস্টেম স্ট্যাটাস</div>
+                <div class="value">১০০% অ্যাক্টিভ ও টেস্টেড</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: CUSTOMER & STOREFRONT FUNCTIONS -->
+    <h1 class="section-title">১. কাস্টমার ও হোমপেজ ফাংশন (Customer & Storefront Functions)</h1>
+    
+    <div class="feature-list">
+        <div class="feature-item highlight">
+            <div class="feature-item-header">
+                <span class="feature-title">🌐 তাৎক্ষণিক ভাষা পরিবর্তন ফাংশন (Instant Language Switcher)</span>
+                <span class="feature-badge">Active</span>
+            </div>
+            <p class="feature-desc">
+                হেডার, মোবাইল ড্রয়ার ও ড্যাশবোর্ডে থাকা <strong>[বাংলা | English]</strong> সুইচ পিলের মাধ্যমে কোনো ধরনের পেজ রিলোড ছাড়াই মিলিসেকেন্ডে সমগ্র ওয়েবসাইট বাংলা বা ইংরেজিতে রূপান্তর করা যায়। ব্যবহারকারীর পছন্দের ভাষা ব্রাউজারের <code>localStorage</code>-এ স্থায়ীভাবে সংরক্ষিত থাকে।
+            </p>
+        </div>
+
+        <div class="feature-item highlight">
+            <div class="feature-item-header">
+                <span class="feature-title">🎬 ডাইনামিক ৪-সেকেন্ড হিরো স্লাইডার (Hero Slider)</span>
+                <span class="feature-badge">Dynamic</span>
+            </div>
+            <p class="feature-desc">
+                প্রতি ৪ সেকেন্ড পরপর অত্যন্ত স্মুথ ফেড/স্লাইড ট্রানজিশনের মাধ্যমে স্বয়ংক্রিয়ভাবে ব্যানার ছবি, শিরোনাম, সাবটাইটেল ও অ্যাকশন বাটন পরিবর্তিত হয়। ব্যবহারকারী চাইলে ম্যানুয়াল প্রিভ/নেক্সট অ্যারো ও পিল ডটের মাধ্যমেও স্লাইড পরিবর্তন করতে পারেন। এটি সরাসরি অ্যাডমিন ড্যাশবোর্ড থেকে নিয়ন্ত্রণযোগ্য।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">🔍 লাইভ সার্চ ইঞ্জিন (Live Product Search)</span>
+                <span class="feature-badge">Real-Time</span>
+            </div>
+            <p class="feature-desc">
+                সার্চ বারে পাহাড়ি মধু, জুমের চাল, বাঁশের পণ্য, ফলমূল বা যেকোনো কি-ওয়ার্ড টাইপ করার সাথে সাথে রিয়েল-টাইমে সংশ্লিষ্ট পণ্য খুঁজে বের করার ফাংশন।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">❤️ উইশলিস্ট বা পছন্দের তালিকা (Wishlist System)</span>
+                <span class="feature-badge">Active</span>
+            </div>
+            <p class="feature-desc">
+                যেকোনো পণ্য ব্রাউজ করার সময় হার্ট আইকনে ক্লিক করে পছন্দের তালিকায় যোগ করা এবং হেডারের উইশলিস্ট কাউন্টার থেকে যেকোনো সময় তা দেখার ব্যবস্থা।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">🛡️ কোর ট্রাস্ট ব্যাজ (Trust Badges Section)</span>
+                <span class="feature-badge">Certified</span>
+            </div>
+            <p class="feature-desc">
+                ১০০% খাঁটি ও অর্গানিক, ন্যায্য বাণিজ্য (Fair Trade), দেশজুড়ে ৬৪ জেলায় দ্রুত ডেলিভারি এবং সত্যতার শতভাগ নিশ্চয়তার ভ্যালু প্রোপজিশন সংবলিত ট্রাস্ট বার।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">📱 মোবাইল রেসপনসিভ ড্রয়ার (Mobile Navigation Drawer)</span>
+                <span class="feature-badge">Responsive</span>
+            </div>
+            <p class="feature-desc">
+                যেকোনো স্মার্টফোনে (375px+) হ্যামবার্গার আইকনে ক্লিকে স্মুথ সাইডবার ড্রয়ার ওপেন হওয়া, যাতে সরাসরি ভাষা পরিবর্তন, ক্যাটাগরি ব্রাউজিং ও ন্যাভিগেশন লিঙ্ক রয়েছে।
+            </p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: SHOP & FILTERING FUNCTIONS -->
+    <h1 class="section-title">২. শপ, প্রোডাক্ট ও ফিল্টারিং ফাংশন (Shop & Filter Functions)</h1>
+
+    <div class="card-grid avoid-break">
+        <div class="card">
+            <h4>🏷️ মাল্টি-লেভেল ক্যাটাগরি ফিল্টার</h4>
+            <p>১০+ মূল ক্যাটাগরি এবং প্রতিটি ক্যাটাগরির নিজস্ব সাব-ক্যাটাগরি অনুযায়ী এক ক্লিকে পণ্য ফিল্টার করার সুবিধা।</p>
+        </div>
+        <div class="card">
+            <h4>📍 পাহাড়ি জেলা অনুযায়ী ফিল্টার</h4>
+            <p>বান্দরবান, রাঙ্গামাটি ও খাগড়াছড়ি—উৎস জেলা নির্বাচন করে নির্দিষ্ট অঞ্চলের কৃষিজ ও পাহাড়ি পণ্য আলাদা করার ব্যবস্থা।</p>
+        </div>
+        <div class="card">
+            <h4>👥 কারিগর সম্প্রদায় অনুযায়ী ফিল্টার</h4>
+            <p>চাকমা, মারমা, ত্রিপুরা, তঞ্চঙ্গ্যা, বম ও ম্রো সম্প্রদায়ের ঐতিহ্যবাহী কারুশিল্প সরাসরি নির্বাচন করে দেখা যায়।</p>
+        </div>
+        <div class="card">
+            <h4>💰 মূল্য পরিসীমা ও পণ্যের ধরন</h4>
+            <p>১,০০০ টাকার নিচে, ১,০০০–২,৫০০ টাকা, ২,৫০০ টাকার বেশি এবং সাধারণ/ভেরিয়েন্ট/হ্যান্ডমেড/অর্গানিক ফিল্টারিং।</p>
+        </div>
+    </div>
+
+    <div class="feature-item avoid-break">
+        <div class="feature-item-header">
+            <span class="feature-title">⚡ সর্টিং ফাংশন ও ইন্টারেক্টিভ প্রোডাক্ট কার্ড</span>
+            <span class="feature-badge">Interactive</span>
+        </div>
+        <p class="feature-desc">
+            জনপ্রিয়তা, কম মূল্য আগে, বেশি মূল্য আগে এবং সেরা রেটিং অনুযায়ী মুহূর্তেই রি-অর্ডার করা যায়। প্রতিটি প্রোডাক্ট কার্ডে রয়েছে জুম হোভার ইফেক্ট, ভেন্ডরের নাম, লোকেশন, ছাড়ের মূল্য (স্ট্রাইকথ্রু), স্টার রেটিং, রিভিউ সংখ্যা এবং কুইক অ্যাড টু কার্ট বাটন।
+        </p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 3: CART & CHECKOUT FUNCTIONS -->
+    <h1 class="section-title">৩. কার্ট ও চেকআউট ফাংশন (Cart & Checkout Functions)</h1>
+
+    <div class="feature-list">
+        <div class="feature-item highlight">
+            <div class="feature-item-header">
+                <span class="feature-title">🛍️ স্লাইড-ওভার কার্ট ড্রয়ার (Slide-over Cart Drawer)</span>
+                <span class="feature-badge">SPA Drawer</span>
+            </div>
+            <p class="feature-desc">
+                গ্রাহক যে পেজেই থাকুন না কেন, পেজ পরিবর্তন না করেই স্ক্রিনের ডানপাশ থেকে একটি আধুনিক কার্ট ড্রয়ার ওপেন হয়। সেখানে পণ্যের ছবি, নাম, নির্বাচিত ভেরিয়েশন (কালার, সাইজ, ওজন) এবং স্বয়ংক্রিয় সাবটোটাল হিসাব প্রদর্শিত হয়।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">🚚 ফ্রি ডেলিভারি প্রোগ্রেস বার (Free Delivery Progress Calculator)</span>
+                <span class="feature-badge">Real-Time</span>
+            </div>
+            <p class="feature-desc">
+                সারাদেশে ৩,০০০ টাকার পণ্য অর্ডারে ফ্রি হোম ডেলিভারির সুযোগ রয়েছে। কার্টে পণ্য যোগ করার সাথে সাথে লাইভ পার্সেন্টেজ বার ও আর কত টাকার পণ্য যোগ করতে হবে তা স্বয়ংক্রিয়ভাবে হিসাব হয়ে দেখায়।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">🔢 ইন-কার্ট কোয়ান্টিটি ও আইটেম ম্যানেজমেন্ট</span>
+                <span class="feature-badge">Active</span>
+            </div>
+            <p class="feature-desc">
+                কার্ট ড্রয়ারের ভেতর থেকেই পণ্য সংখ্যা বাড়ানো (+), কমানো (-) বা ট্র্যাশ ক্যানের সাহায্যে আইটেম রিমুভ করার ফাংশন।
+            </p>
+        </div>
+
+        <div class="feature-item highlight">
+            <div class="feature-item-header">
+                <span class="feature-title">🔒 ৪-ধাপের নিরাপদ চেকআউট সিস্টেম (4-Step Secure Checkout)</span>
+                <span class="feature-badge">Validated</span>
+            </div>
+            <p class="feature-desc">
+                <strong>ধাপ ১:</strong> গ্রাহকের নাম ও মোবাইল নম্বর যাচাইকরণ।<br>
+                <strong>ধাপ ২:</strong> ডেলিভারি ঠিকানা (বাংলাদেশের ৬৪ জেলা ও উপজেলা সিলেক্টর ড্রপডাউন)।<br>
+                <strong>ধাপ ৩:</strong> ডেলিভারি মেথড নির্বাচন (স্ট্যান্ডার্ড ডেলিভারি ২-৪ দিন ও এক্সপ্রেস দ্রুত ডেলিভারি)।<br>
+                <strong>ধাপ ৪:</strong> পেমেন্ট মেথড নির্বাচন (ক্যাশ অন ডেলিভারি, বিকাশ, নগদ ও রকেট পেমেন্ট)।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">🏷️ কুপন কোড ও অর্ডার ট্র্যাকিং কনফার্মেশন</span>
+                <span class="feature-badge">Automated</span>
+            </div>
+            <p class="feature-desc">
+                প্রোমো বা কুপন কোড লিখে প্রয়োগ করার ব্যবস্থা এবং অর্ডার নিশ্চিত হওয়ার পর তাৎক্ষণিক ইউনিক ট্র্যাকিং আইডি (যেমন: <code>#PH-2481</code>) ও এসএমএস নোটিফিকেশন তথ্য প্রদান।
+            </p>
+        </div>
+    </div>
+
+    <!-- SECTION 4: SUPER ADMIN DASHBOARD FUNCTIONS -->
+    <h1 class="section-title">৪. সুপার অ্যাডমিন ড্যাশবোর্ড ফাংশন (Super Admin Functions)</h1>
+    <p>প্ল্যাটফর্মের অখণ্ডতা ও নিরাপত্তা বজায় রাখার জন্য অ্যাডমিনের হাতে রয়েছে কেন্দ্রীভূত নিয়ন্ত্রণ ক্ষমতা:</p>
+
+    <div class="card-grid avoid-break">
+        <div class="card">
+            <h4>📊 ওভারভিউ অ্যানালিটিক্স</h4>
+            <p>মোট রেভিনিউ, সক্রিয় ভেন্ডর, লাইভ প্রোডাক্ট ও মোট অর্ডারের রিয়েল-টাইম মেট্রিক্স কার্ড এবং গ্রাফ।</p>
+        </div>
+        <div class="card">
+            <h4>🖼️ হিরো ব্যানার স্টুডিও</h4>
+            <p>হোমপেজের স্লাইডার ছবি আপলোড, ড্র্যাগ-অ্যান্ড-ড্রপ পুনর্বিন্যাস এবং বাংলা ও ইংরেজি কন্টেন্ট ম্যানেজমেন্ট।</p>
+        </div>
+    </div>
+
+    <div class="feature-item highlight avoid-break">
+        <div class="feature-item-header">
+            <span class="feature-title">⚖️ সেন্ট্রাল Attribute ও Unit ম্যানেজমেন্ট স্টুডিও</span>
+            <span class="feature-badge">Strict Control</span>
+        </div>
+        <p class="feature-desc">
+            ভেন্ডররা কখনো সাইটের গ্লোবাল ইউনিট বা অ্যাট্রিবিউট তৈরি বা পরিবর্তন করতে পারে না। শুধুমাত্র অ্যাডমিন এটি সেন্ট্রালি নিয়ন্ত্রণ করে:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>গ্রুপ</th>
+                    <th>ইউনিট (Units)</th>
+                    <th>অ্যাট্রিবিউট ও অনুমোদিত ভ্যালু (Values)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ওজন</strong></td>
+                    <td>গ্রাম (g), কেজি (kg)</td>
+                    <td>২৫০g, ৫০০g, ১kg, ২kg, ৫kg</td>
+                </tr>
+                <tr>
+                    <td><strong>তরল</strong></td>
+                    <td>মিলি (ml), লিটার (L)</td>
+                    <td>১০০ml, ২৫০ml, ৫০০ml, ১L</td>
+                </tr>
+                <tr>
+                    <td><strong>গণনা</strong></td>
+                    <td>পিস, ডজন, হালি (৪ পিস), জোড়া, প্যাকেট, বক্স, বোতল, জার</td>
+                    <td>১ পিস, ১ ডজন, ১ হালি, ১ জোড়া, ১ বক্স</td>
+                </tr>
+                <tr>
+                    <td><strong>দৈর্ঘ্য ও সাইজ</strong></td>
+                    <td>ইঞ্চি, ফুট, মিটার, গজ</td>
+                    <td>পোশাক: XS, S, M, L, XL, XXL, Free Size | জুতা: ৩৯–৪৪</td>
+                </tr>
+                <tr>
+                    <td><strong>রং ও উপাদান</strong></td>
+                    <td>—</td>
+                    <td>লাল, নীল, সবুজ, কালো, হলুদ, বাঁশ, বেত, খাঁটি তুলা, কাঠ, মাটি</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-grid avoid-break">
+        <div class="card">
+            <h4>🛡️ ক্যাটাগরি হাব ও সেফটি ডিলিট গার্ড</h4>
+            <p>ক্যাটাগরি তৈরি ও এডিটের পাশাপাশি <strong>Safety Delete Guard</strong> সক্রিয় রয়েছে, যা পণ্য অ্যাসাইন থাকা অবস্থায় ক্যাটাগরি ডিলিট হওয়া সম্পূর্ণ ব্লক করে দেয়।</p>
+        </div>
+        <div class="card">
+            <h4>💵 ভেন্ডর অনবোর্ডিং ও পে-আউট রিলিজ</h4>
+            <p>ভেন্ডরদের এনআইডি কার্ড ও দোকানের তথ্য যাচাই করে অনুমোদন দেওয়া এবং ভেন্ডরদের ওয়ালেট ব্যালেন্সের উইথড্রয়াল রিকোয়েস্ট ক্লিয়ারেন্স প্রদান।</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 5: VENDOR PORTAL & TECH FUNCTIONS -->
+    <h1 class="section-title">৫. ভেন্ডর পোর্টাল ও প্রযুক্তিগত ফাংশন (Vendor & Core Tech)</h1>
+
+    <div class="feature-list">
+        <div class="feature-item highlight">
+            <div class="feature-item-header">
+                <span class="feature-title">🏪 ভেন্ডর রেজিস্ট্রেশন ও কন্ট্রোল প্যানেল (Vendor Control Panel)</span>
+                <span class="feature-badge">Role Portal</span>
+            </div>
+            <p class="feature-desc">
+                যে কেউ সাইটের "ভেন্ডর হন" পেজ থেকে দোকান/খামারের নাম, এনআইডি ও কারিগর সংখ্যা দিয়ে আবেদন করতে পারেন। অনুমোদিত ভেন্ডররা নিজস্ব ড্যাশবোর্ড থেকে তাদের স্টোর প্রোফাইল ও ব্যানার সাজাতে পারেন।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">🧙‍♂️ ৯-ধাপের প্রোডাক্ট আপলোড উইজার্ড (9-Step Product Wizard)</span>
+                <span class="feature-badge">Step-by-Step</span>
+            </div>
+            <p class="feature-desc">
+                ভেন্ডরদের জন্য অত্যন্ত সহজ ৯-ধাপের পণ্য আপলোড ব্যবস্থা। এর মাধ্যমে সাধারণ পণ্য (Simple Product) এবং মাল্টি-ভেরিয়েন্ট পণ্য (কালার, সাইজ, ওজনভিত্তিক) নির্ভুলভাবে আপলোড করা যায়।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">📦 ইনভেন্টরি, স্টক ও অর্ডার ট্র্যাকিং</span>
+                <span class="feature-badge">Inventory</span>
+            </div>
+            <p class="feature-desc">
+                ভেন্ডর ড্যাশবোর্ড থেকেই সরাসরি ইনলাইন এডিটিংয়ের মাধ্যমে স্টক বাড়ানো/কমানো এবং আগত গ্রাহক অর্ডারের ডেলিভারি স্ট্যাটাস আপডেট করার ফাংশন।
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-item-header">
+                <span class="feature-title">💳 ওয়ালেট ও উইথড্রয়াল রিকোয়েস্ট (Vendor Earnings)</span>
+                <span class="feature-badge">Finance</span>
+            </div>
+            <p class="feature-desc">
+                বিক্রিত পণ্যের মোট আয়, কমিশন বাদে নিট ওয়ালেট ব্যালেন্স দেখা এবং ব্যাংকিং বা এমএফএস অ্যাকাউন্টে অর্থ উত্তোলনের আবেদন পাঠানোর ব্যবস্থা।
+            </p>
+        </div>
+    </div>
+
+    <h2 class="part-title">প্রযুক্তি ও পারফরম্যান্স সক্ষমতা (Technical Performance)</h2>
+    <table class="avoid-break">
+        <thead>
+            <tr>
+                <th>লেয়ার</th>
+                <th>প্রযুক্তি</th>
+                <th>সিস্টেমের সুবিধা</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Backend</strong></td>
+                <td>Laravel 12 (PHP 8.2+)</td>
+                <td>সিকিউর RESTful এপিআই ও রোল-বেসড এক্সেস কন্ট্রোল।</td>
+            </tr>
+            <tr>
+                <td><strong>Frontend Core</strong></td>
+                <td>React 19 + Inertia.js</td>
+                <td>ফুল এসপিএ (SPA) স্পিড, পেজ রিলোড ছাড়া চোখের পলকে ট্রানজিশন।</td>
+            </tr>
+            <tr>
+                <td><strong>Styling</strong></td>
+                <td>Tailwind CSS v4</td>
+                <td>কাস্টম অর্গানিক কালার প্যালেট ও জিরো সিএসএস ব্লোট।</td>
+            </tr>
+            <tr>
+                <td><strong>Localization (i18n)</strong></td>
+                <td>React Context API</td>
+                <td>কোনো রিফ্রেশ ছাড়া বাংলা ও ইংরেজির মধ্যে ইনস্ট্যান্ট সুইচিং।</td>
+            </tr>
+            <tr>
+                <td><strong>Bundler</strong></td>
+                <td>Vite 8.3</td>
+                <td>সুপারফাস্ট লোডিং ও অপ্টিমাইজড প্রোডাকশন বান্ডলিং।</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer-note">
+        <strong>অর্গানিক বাজার চাই (Organic Bazar Chai)</strong> — সকল ফাংশন ও ফিচার শতভাগ সক্রিয় এবং যেকোনো প্রেজেন্টেশন বা লাইভ অপারেশনের জন্য সম্পূর্ণ প্রস্তুত।
+    </div>
+
+</body>
+</html>

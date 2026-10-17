@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Karla", system-ui, -apple-system, sans-serif;
+    --font-display: "Fraunces", Georgia, serif;
+    
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-forest-deep: var(--forest-deep);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-terracotta-deep: var(--terracotta-deep);
+    --color-sand: var(--sand);
+    --color-ivory: var(--ivory);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-brown: #8D5B36;
+}
+
+:root {
+    --background: #FAF8F5;
+    --foreground: #1E2522;
+    --card: #FFFFFF;
+    --card-foreground: #1E2522;
+    --popover: #FFFFFF;
+    --popover-foreground: #1E2522;
+    --primary: #234E2A;
+    --primary-foreground: #FFFFFF;
+    --forest-deep: #16361C;
+    --secondary: #F0ECE1;
+    --secondary-foreground: #234E2A;
+    --muted: #F3EFE7;
+    --muted-foreground: #6C756B;
+    --accent: #C85A32;
+    --accent-foreground: #FFFFFF;
+    --terracotta-deep: #A94320;
+    --sand: #E3D7C5;
+    --ivory: #FAF6EF;
+    --border: #E8E2D5;
+    --input: #E4DDD0;
+    --radius: 0.75rem;
+    --shadow-soft: 0 1px 2px rgba(22, 54, 28, 0.05), 0 12px 32px -12px rgba(22, 54, 28, 0.12);
+    --shadow-lift: 0 2px 4px rgba(22, 54, 28, 0.08), 0 24px 48px -16px rgba(22, 54, 28, 0.20);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+}
+
+.texture-weave {
+    background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.06) 0 2px, transparent 2px 8px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+    background: #D9D2C3;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #B8B0A0;
+}

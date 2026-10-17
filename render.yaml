@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: organic-bazar-chai
+    env: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: APP_NAME
+        value: "অর্গানিক বাজার চাই"
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        value: base64:3f2q1L9kU5p9r2m7T6h0s4k8j2a9X7z1b4c6v8m0w2A=
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_TIMEZONE
+        value: Asia/Dhaka
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/www/html/database/database.sqlite
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: FILESYSTEM_DISK
+        value: local

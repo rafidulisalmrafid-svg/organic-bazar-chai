@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>Paharika — প্রজেক্ট ডেভেলপমেন্ট চেকলিস্ট ও কমপ্লিশন রিপোর্ট</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 15mm 18mm 15mm;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #1f2937;
+            background-color: #ffffff;
+            font-size: 11pt;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .header-container {
+            border-bottom: 2.5px solid #1c3f32;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .brand-title {
+            font-size: 26pt;
+            font-weight: 800;
+            color: #1c3f32;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .brand-subtitle {
+            font-size: 11pt;
+            color: #c05621;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .meta-info {
+            text-align: right;
+            font-size: 9pt;
+            color: #6b7280;
+        }
+
+        .meta-info strong {
+            color: #111827;
+        }
+
+        .badge-status {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 9pt;
+            margin-bottom: 4px;
+        }
+
+        .executive-summary {
+            background-color: #f7faf8;
+            border-left: 4px solid #1c3f32;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 22px;
+            font-size: 10pt;
+        }
+
+        .section-title {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #1c3f32;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-tag {
+            font-size: 8.5pt;
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 9px;
+            margin-bottom: 12px;
+        }
+
+        .check-item {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 9px 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            page-break-inside: avoid;
+        }
+
+        .check-icon {
+            width: 19px;
+            height: 19px;
+            background: #10b981;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11pt;
+            font-weight: 900;
+            flex-shrink: 0;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        .check-content {
+            flex: 1;
+        }
+
+        .check-title {
+            font-weight: 700;
+            font-size: 10.5pt;
+            color: #111827;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .check-badge {
+            font-size: 8pt;
+            font-weight: 600;
+            color: #065f46;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+
+        .check-desc {
+            font-size: 9.5pt;
+            color: #4b5563;
+            margin-top: 2px;
+        }
+
+        .tech-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .tech-chip {
+            background: #f3f4f6;
+            color: #374151;
+            font-size: 8pt;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-family: 'Inter', monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.5pt;
+            margin: 10px 0 16px 0;
+            page-break-inside: avoid;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 7px 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .footer {
+            margin-top: 30px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8.5pt;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header-container">
+        <div>
+            <div class="brand-title">পাহাড়িকা (Paharika)</div>
+            <div class="brand-subtitle">পার্বত্য চট্টগ্রাম আদিবাসী পণ্য ও মাল্টি-ভেন্ডর ই-কমার্স প্ল্যাটফর্ম</div>
+        </div>
+        <div class="meta-info">
+            <div class="badge-status">✓ All 100% Implemented & Verified</div>
+            <div>প্রতিবেদন তারিখ: <strong>১৭ অক্টোবর, ২০২৬</strong></div>
+            <div>প্রজেক্ট সংস্করণ: <strong>Release v2.4 (Production Ready)</strong></div>
+            <div>টেক স্ট্যাক: <strong>Laravel 12 + Inertia.js (React) + Vite</strong></div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="executive-summary">
+        <strong>সারসংক্ষেপ (Executive Summary):</strong> ব্যবহারকারীর নির্দেশনা অনুযায়ী পাহাড়ি ঐতিহ্যবাহী আদিবাসী পণ্যভিত্তিক মার্কেটপ্লেস <em>Paharika</em>-এর সম্পূর্ণ ক্যাটাগরি স্ট্রাকচার, সাব-ক্যাটাগরি রিলেশনশিপ, সুপার অ্যাডমিন ম্যানেজমেন্ট, রিয়েলিস্টিক প্রোডাক্ট ক্যাটালগ সিডিং এবং সর্বাধুনিক হাই-কনভার্সন চেকআউট ও অর্ডার ম্যানেজমেন্ট সফলভাবে বাস্তবায়িত ও কার্যকর করা হয়েছে। নিচে সম্পাদিত সকল কাজের বিস্তারিত চেকলিস্ট উপস্থাপন করা হলো।
+    </div>
+
+    <!-- 1. Category Architecture -->
+    <div class="section-title">
+        <span>১. পাহাড়ি ক্যাটাগরি ও সাব-ক্যাটাগরি হায়ারার্কি আর্কিটেকচার</span>
+        <span class="section-tag">Category Management & Taxonomy</span>
+    </div>
+
+    <div class="checklist-grid">
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>১০টি প্রধান পাহাড়ি ক্যাটাগরি ও প্যারেন্ট-চাইল্ড সাব-ক্যাটাগরি স্ট্রাকচার</span>
+                    <span class="check-badge">Implemented</span>
+                </div>
+                <div class="check-desc">
+                    পাহাড়ি ফল (আনারস, কমলা/মাল্টা, কাঁঠাল, লিচু, কলা), মধু ও মোম, পাহাড়ি খাদ্য ও শুঁটকি (বাঁশ কোড়ল আচার, জুমের লাল চাল), হস্তশিল্প (বাঁশ, বেত ও মৃৎশিল্প), ঐতিহ্যবাহী তাঁতবস্ত্র (পিনন-হাদি, থামি, খাদি, শাল), গহনা (খাঁটি রূপার হাসুলি ও পুঁতির মালা), পাহাড়ি চা ও কফি (বান্দরবান অ্যারাবিকা কফি, গোটা পাতার চা), ভেষজ যত্ন, পাহাড়ি গিফট বক্স ও পাহাড়ি মসলা (আদা, পাহাড়ি দেশি রসুন, হলুদ, গোলমরিচ)।
+                </div>
+                <div class="tech-chips">
+                    <span class="tech-chip">Parent-Child Taxonomy</span>
+                    <span class="tech-chip">ProductController.php</span>
+                    <span class="tech-chip">Header.jsx Nav Dropdowns</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>অভিভাবক ক্যাটাগরি (Parent Category) ও নেভিগেশন ডিসপ্লে ফিক্স</span>
+                    <span class="check-badge">Resolved</span>
+                </div>
+                <div class="check-desc">
+                    ব্যবহারকারীর প্রশ্ন "Parent Category (অভিভাবক ক্যাটাগরি) কাজটা কি?" ব্যাখ্যা করা হয়েছে এবং নতুন সাব-ক্যাটাগরি তৈরি করলে তা কীভাবে মূল ক্যাটাগরির অধীনে স্বয়ংক্রিয়ভাবে হোমপেজ ও শপ নেভিগেশনে দেখা যাবে তা সম্পূর্ণ কানেক্ট করা হয়েছে।
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Admin Category Management -->
+    <div class="section-title">
+        <span>২. সুপার অ্যাডমিন ড্যাশবোর্ড ও ক্যাটাগরি টুলস</span>
+        <span class="section-tag">Admin Controls & Media</span>
+    </div>
+
+    <div class="checklist-grid">
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>ক্যাটাগরি কভার ছবি: ইমেজ URL + সরাসরি ফাইল আপলোড (Dropzone)</span>
+                    <span class="check-badge">Dual-mode Media</span>
+                </div>
+                <div class="check-desc">
+                    অ্যাডমিন প্যানেলে ক্যাটাগরি তৈরির সময় বাহ্যিক Image URL ইনপুট দেওয়ার পাশাপাশি সরাসরি কম্পিউটার বা মোবাইল থেকে ব্রাউজ ও ড্র্যাগ-অ্যান্ড-ড্রপ করে ছবি আপলোডের ডুয়েল ইন্টারফেস যুক্ত করা হয়েছে (লাইভ প্রিভিউ ও রিমুভ অপশন সহ)।
+                </div>
+                <div class="tech-chips">
+                    <span class="tech-chip">FileReader API</span>
+                    <span class="tech-chip">Live Thumbnail Preview</span>
+                    <span class="tech-chip">Drag & Drop Zone</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>৭৫+ ই-কমার্স ক্যাটাগরি আইকন নির্বাচন লাইব্রেরি (Interactive Picker)</span>
+                    <span class="check-badge">75+ Icons Catalog</span>
+                </div>
+                <div class="check-desc">
+                    ই-কমার্সে প্রয়োজনীয় প্রতিটি ক্যাটাগরির জন্য ৮টি সুনির্দিষ্ট গ্রুপে (ফলমূল ও খাদ্য, পোশাক ও ফ্যাশন, হস্তশিল্প ও হোম, কৃষি ও গাছপালা, পানীয় ও মসলা, স্বাস্থ্য ও ভেষজ, টেক ও কারুশিল্প) সার্চযোগ্য ও ফিল্টারযোগ্য প্রিমিয়াম আইকন পিকার যোগ করা হয়েছে।
+                </div>
+                <div class="tech-chips">
+                    <span class="tech-chip">Lucide Dynamic Icons</span>
+                    <span class="tech-chip">Search & Group Filter</span>
+                    <span class="tech-chip">categoryIcons.jsx</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Break for clean printing -->
+    <div class="page-break"></div>
+
+    <!-- 3. Product Catalog & Assets -->
+    <div class="section-title">
+        <span>৩. অথেনটিক প্রোডাক্ট ক্যাটালগ ও ফটো অ্যাসেটস</span>
+        <span class="section-tag">Database & Visual Assets</span>
+    </div>
+
+    <div class="checklist-grid">
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>২৩টি বাস্তবসম্মত পাহাড়ি পণ্যের সম্পূর্ণ ডেটাবেজ সিডিং</span>
+                    <span class="check-badge">23 Authentic SKUs</span>
+                </div>
+                <div class="check-desc">
+                    সকল ক্যাটাগরির অধীনে আসল পাহাড়ি পণ্যের নাম, দাম, ওল্ড প্রাইস, আদিবাসী ভেন্ডর (যেমন: Rangamati Weaves, Khagrachari Organics, Bandarban Cane Craft), লোকেশন, স্টক, এসকেইউ ও বিস্তারিত স্পেসিফিকেশন সিড করা হয়েছে।
+                </div>
+                <div class="tech-chips">
+                    <span class="tech-chip">সাজেক মধু আনারস</span>
+                    <span class="tech-chip">চিম্বুক পাহাড়ি কমলা</span>
+                    <span class="tech-chip">বাঁশ কোড়ল আচার</span>
+                    <span class="tech-chip">জুমের লাল চাল</span>
+                    <span class="tech-chip">চাকমা পিনন-হাদি</span>
+                    <span class="tech-chip">রূপার হাসুলি</span>
+                    <span class="tech-chip">বান্দরবান অ্যারাবিকা কফি</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>হাই-রেজ্যুলেশন পাহাড়ি পণ্যের কাস্টম ইমেজ জেনারেশন</span>
+                    <span class="check-badge">9 Generated Assets</span>
+                </div>
+                <div class="check-desc">
+                    কোনো স্থানধারক বা ভাঙা ছবি ছাড়াই আসল পাহাড়ি পণ্যগুলোর নিখুঁত ও নান্দনিক ইমেজ তৈরি করে `public/images/` ডিরেক্টরিতে ইন্টিগ্রেট করা হয়েছে।
+                </div>
+                <div class="tech-chips">
+                    <span class="tech-chip">prod-pineapple.jpg</span>
+                    <span class="tech-chip">prod-orange.jpg</span>
+                    <span class="tech-chip">prod-bamboo-shoot.jpg</span>
+                    <span class="tech-chip">prod-silver.jpg</span>
+                    <span class="tech-chip">prod-coffee.jpg</span>
+                    <span class="tech-chip">prod-pinon.jpg</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Advanced Checkout System -->
+    <div class="section-title">
+        <span>৪. অত্যাধুনিক হাই-কনভার্সন চেকআউট সিস্টেম (Checkout Page)</span>
+        <span class="section-tag">Checkout.jsx & bangladeshGeo.js</span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%;">মডিউল</th>
+                <th style="width: 50%;">বাস্তবায়িত ফিচার বিবরণ</th>
+                <th style="width: 25%;">স্ট্যাটাস ও ভ্যালিডেশন</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>১. কাস্টমার তথ্য ও গেস্ট চেকআউট</strong></td>
+                <td>পূর্ণ নাম, সক্রিয় মোবাইল নম্বর (১১ ডিজিট ভ্যালিডেশন), বিকল্প নম্বর, ইমেইল ইনপুট। কোনো বাধ্যতামূলক লগইন ছাড়াই দ্রুত অর্ডার ও লোকালস্টোরেজে তথ্য সংরক্ষণের সুবিধা।</td>
+                <td><span class="badge-status">✓ Tested & Active</span></td>
+            </tr>
+            <tr>
+                <td><strong>২. ক্যাসকেডিং ডেলিভারি ঠিকানা</strong></td>
+                <td>বাংলাদেশের সকল ৮টি বিভাগ → জেলা → উপজেলা/থানার স্বয়ংক্রিয় নির্ভরশীল ড্রপডাউন। বিস্তারিত বাসা/গ্রাম ঠিকানা, ল্যান্ডমার্ক এবং হোম ডেলিভারি বনাম কুরিয়ার পয়েন্ট নির্বাচন।</td>
+                <td><span class="badge-status">✓ All 8 Divisions</span></td>
+            </tr>
+            <tr>
+                <td><strong>৩. স্মার্ট ডেলিভারি চার্জ ক্যালকুলেটর</strong></td>
+                <td>ঢাকা সিটিতে ৳৬০, চট্টগ্রাম ও পার্বত্য জেলায় ৳৮০, দেশের অন্যান্য জেলায় ৳১২০ স্বয়ংক্রিয় হিসাব। ৳২,০০০+ অর্ডারে সম্পূর্ণ ফ্রি ডেলিভারি ও রিয়েলটাইম ফ্রি ডেলিভারি প্রোগ্রেস বার।</td>
+                <td><span class="badge-status">✓ Dynamic Logic</span></td>
+            </tr>
+            <tr>
+                <td><strong>৪. পেমেন্ট মেথড</strong></td>
+                <td>১. ক্যাশ অন ডেলিভারি (COD)<br>২. বিকাশ/নগদ/রকেট (মার্চেন্ট নম্বর প্রদর্শন ও TrxID ইনপুট)<br>৩. ডেবিট/ক্রেডিট কার্ড ও ইন্টারনেট ব্যাংকিং (SSLCommerz)</td>
+                <td><span class="badge-status">✓ Multi-Payment</span></td>
+            </tr>
+            <tr>
+                <td><strong>৫. মাল্টি-ভেন্ডর অর্ডার সামারি</strong></td>
+                <td>প্রতিটি পণ্যকে তার পাহাড়ি ভেন্ডর অনুসারে আলাদা গ্রুপে প্রদর্শন। অর্ডার সামারিতেই সরাসরি পণ্যের সংখ্যা কমানো/বাড়ানো (+ / -) এবং মুছে ফেলার রিয়েলটাইম নিয়ন্ত্রণ।</td>
+                <td><span class="badge-status">✓ Real-time Cart</span></td>
+            </tr>
+            <tr>
+                <td><strong>৬. কুপন ডিসকাউন্ট সিস্টেম</strong></td>
+                <td>কুপন কোড ইনপুট ও ভ্যালিডেশন। কুইক সাজেস্টেড কুপন চিপস: <code>PAHARIKA10</code> (১০% ছাড়) এবং <code>HILLLOVE</code> (৳১০০ ফ্ল্যাট ছাড়) ইন্টিগ্রেটেড।</td>
+                <td><span class="badge-status">✓ Coupon Engine</span></td>
+            </tr>
+            <tr>
+                <td><strong>৭. উপহার মোড়ক ও পাহাড়ি সুরক্ষা</strong></td>
+                <td>পাহাড়ি পাট ও ক্রাফট পেপারে ইকো-ফ্রেন্ডলি গিফট প্যাকেজিং (+ ৳৫০) ও শুভেচ্ছা বার্তা। কাঁচের বয়ামের বাবলর্যাপ নিরাপত্তা ও পচনশীল ফলের জন্য ২৪ ঘণ্টার রিপ্লেসমেন্ট পলিসি।</td>
+                <td><span class="badge-status">✓ Safety Notice</span></td>
+            </tr>
+            <tr>
+                <td><strong>৮. ডায়নামিক কনফার্মেশন স্ক্রিন</strong></td>
+                <td>অর্ডার সফল হলে ট্র্যাকিং আইডি (#PH-XXXX), আনুমানিক ডেলিভারি ডেট, অর্ডার সারাংশ, লাইভ ট্র্যাকিং লিংক ও ইনভয়েস প্রিন্ট করার বোতাম সহ থ্যাঙ্ক ইউ পেজ।</td>
+                <td><span class="badge-status">✓ Live Verified</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 5. Verification & Testing -->
+    <div class="section-title">
+        <span>৫. কোয়ালিটি অ্যাস্যুরেন্স ও ব্রাউজার টেস্ট ভেরিফিকেশন</span>
+        <span class="section-tag">Quality Assurance</span>
+    </div>
+
+    <div class="checklist-grid">
+        <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div class="check-content">
+                <div class="check-title">
+                    <span>এন্ড-টু-এন্ড অটোমেটেড ব্রাউজার টেস্টিং সম্পন্ন</span>
+                    <span class="check-badge">E2E Passed</span>
+                </div>
+                <div class="check-desc">
+                    ব্রাউজার সাব-এজেন্টের মাধ্যমে চেকআউট পেজের ফর্ম ফিলআপ, ক্যাসকেডিং ড্রপডাউন নির্বাচন, কুপন প্রয়োগ (PAHARIKA10), গিফট র্যাপিং টগল এবং অর্ডার প্লেস করে <strong>#PH-3611</strong> অর্ডার সফলভাবে গৃহীত হওয়া যাচাই করা হয়েছে।
+                </div>
+                <div class="tech-chips">
+                    <span class="tech-chip">Vite Build: Zero Errors</span>
+                    <span class="tech-chip">Responsive Viewport Verified</span>
+                    <span class="tech-chip">Chrome/Edge Headless Compatible</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>পাহাড়িকা ই-কমার্স — পার্বত্য চট্টগ্রামের টেকসই হস্তশিল্প ও অর্গানিক কৃষির ডিজিটাল প্ল্যাটফর্ম</div>
+        <div>পৃষ্ঠা ১ / ১ (সম্পূর্ণ প্রতিবেদন)</div>
+    </div>
+
+</body>
+</html>

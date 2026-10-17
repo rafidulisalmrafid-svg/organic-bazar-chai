@@ -1,0 +1,2 @@
+# Keep database.sqlite for Render deployment so no data is lost!
+!database.sqlite

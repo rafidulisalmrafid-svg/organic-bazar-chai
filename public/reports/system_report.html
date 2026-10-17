@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অর্গানিক বাজার চাই — সিস্টেম অ্যানালাইসিস ও ফিচার রিপোর্ট</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 15mm 18mm 18mm 18mm;
+            @bottom-right {
+                content: "পৃষ্ঠা " counter(page);
+                font-family: 'Hind Siliguri', sans-serif;
+                font-size: 9pt;
+                color: #666;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1f2937;
+            background-color: #ffffff;
+            line-height: 1.6;
+            font-size: 10pt;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .avoid-break {
+            page-break-inside: avoid;
+        }
+
+        /* Cover Page */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 20px 20px 20px;
+            text-align: center;
+        }
+
+        .cover-header {
+            margin-top: 40px;
+        }
+
+        .logo-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            padding: 16px 28px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(27, 77, 62, 0.12);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 24px;
+        }
+
+        .logo-box img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            font-size: 32pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .brand-subtitle {
+            font-size: 14pt;
+            color: #C05621;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .report-badge {
+            display: inline-block;
+            background: #EBF8F2;
+            color: #1B4D3E;
+            border: 1px solid #B7E4CF;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            font-size: 10pt;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .cover-hero-card {
+            background: linear-gradient(135deg, #1B4D3E 0%, #0F3026 100%);
+            color: #ffffff;
+            padding: 36px 30px;
+            border-radius: 20px;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(27, 77, 62, 0.2);
+            text-align: left;
+        }
+
+        .cover-hero-card h2 {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #FDFCFA;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .cover-hero-card p {
+            font-size: 10.5pt;
+            color: #D1E7DD;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 24px;
+            text-align: left;
+        }
+
+        .meta-item .label {
+            font-size: 8.5pt;
+            color: #6B7280;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .meta-item .value {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #111827;
+            margin-top: 2px;
+        }
+
+        /* Document Content */
+        h1.section-title {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            border-bottom: 2px solid #EBF8F2;
+            padding-bottom: 8px;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2.part-title {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            background: #F4FBF7;
+            border-left: 4px solid #1B4D3E;
+            padding: 8px 12px;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        h3.sub-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #C05621;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: #374151;
+            text-align: justify;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 14px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            color: #374151;
+        }
+
+        /* Feature Cards Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card.highlight {
+            border-color: #A7F3D0;
+            background: #F9FEFB;
+        }
+
+        .card h4 {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #1B4D3E;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card p {
+            font-size: 9.5pt;
+            color: #4B5563;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0 20px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #1B4D3E;
+            color: #ffffff;
+            text-align: left;
+            padding: 8px 10px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #E5E7EB;
+            color: #374151;
+        }
+
+        tr:nth-child(even) {
+            background: #F9FAFB;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 7.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-green {
+            background: #DEF7EC;
+            color: #03543F;
+        }
+
+        .badge-amber {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .badge-blue {
+            background: #E1EFFE;
+            color: #1E429F;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .stat-box {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #1B4D3E;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .stat-box .title {
+            font-size: 8.5pt;
+            color: #6B7280;
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            padding: 14px;
+            background: #F3F4F6;
+            border-radius: 10px;
+            font-size: 8.5pt;
+            color: #6B7280;
+            text-align: center;
+            border: 1px dashed #D1D5DB;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COVER PAGE -->
+    <div class="cover page-break">
+        <div class="cover-header">
+            <div class="logo-box">
+                <img src="file:///C:/Users/USER/.gemini/antigravity-ide/scratch/ecommerce/public/images/logo.png" alt="অর্গানিক বাজার চাই">
+            </div>
+            <div class="brand-title">অর্গানিক বাজার চাই</div>
+            <div class="brand-subtitle">খাঁটি প্রাকৃতিক পণ্যের হাট (Organic & Hill Marketplace)</div>
+            <span class="report-badge">System Architecture & Feature Specification</span>
+        </div>
+
+        <div class="cover-hero-card">
+            <h2>মাল্টি-ভেন্ডর ই-কমার্স প্ল্যাটফর্ম: পূর্ণাঙ্গ কারিগরি ও ফিচার বিশ্লেষণ</h2>
+            <p>
+                পার্বত্য অঞ্চল ও সমতলের প্রান্তিক কৃষক, মৌয়াল ও তাঁতিদের খাঁটি অর্গানিক ও ঐতিহ্যবাহী পণ্য ভোক্তাদের কাছে পৌঁছে দেওয়ার লক্ষ্যে নির্মিত একটি সম্পূর্ণ আধুনিক, দ্রুতগতির, ফুল রেসপনসিভ ও দ্বিভাষিক (বাংলা ও ইংরেজি) ডিজিটাল প্ল্যাটফর্ম।
+            </p>
+        </div>
+
+        <div class="cover-meta">
+            <div class="meta-item">
+                <div class="label">প্রকল্পের ধরন</div>
+                <div class="value">Multi-Vendor E-Commerce</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">ভাষা ও লোকাল</div>
+                <div class="value">বাংলা ও English (Dual)</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">সিস্টেম স্ট্যাটাস</div>
+                <div class="value">Production Ready (v1.0)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <h1 class="section-title">১. সার্বিক নির্বাহী সারসংক্ষেপ (Executive Summary)</h1>
+    <p>
+        <strong>অর্গানিক বাজার চাই</strong> এমন একটি বিশেষায়িত ই-কমার্স প্ল্যাটফর্ম যা সাধারণ অনলাইন শপের চেয়ে বহুগুণে স্বতন্ত্র। এটি সরাসরি পাহাড়ি ও প্রান্তিক কৃষকদের ন্যায্যমূল্য নিশ্চিত করে এবং ভোক্তাদের কাছে শতভাগ খাঁটি ও পরীক্ষিত অর্গানিক খাদ্য এবং ঐতিহ্যবাহী কারুশিল্প পৌঁছে দেয়।
+    </p>
+
+    <div class="stats-strip avoid-break">
+        <div class="stat-box">
+            <div class="num">100%</div>
+            <div class="stat-title">দ্বিভাষিক (বাংলা/EN)</div>
+        </div>
+        <div class="stat-box">
+            <div class="num">4 Sec</div>
+            <div class="stat-title">অটো হিরো স্লাইডার</div>
+        </div>
+        <div class="stat-box">
+            <div class="num">4 Groups</div>
+            <div class="stat-title">ইউনিট ও অ্যাট্রিবিউট</div>
+        </div>
+        <div class="stat-box">
+            <div class="num">64 Districts</div>
+            <div class="stat-title">ডেলিভারি কাভারেজ</div>
+        </div>
+    </div>
+
+    <div class="card-grid avoid-break">
+        <div class="card highlight">
+            <h4>⚡ উচ্চগতির প্রযুক্তি ও ব্যবহারযোগ্যতা</h4>
+            <p>Laravel 12 ও React 19 (Inertia.js) আর্কিটেকচার ব্যবহারের ফলে প্রতিটি পেজ রিলোড ছাড়াই চোখের পলকে লোড হয়। কোনো ল্যাগ বা ফ্রেম ড্রপ নেই।</p>
+        </div>
+        <div class="card highlight">
+            <h4>🌐 দ্বিভাষিক রূপান্তর (Instant Language Toggle)</h4>
+            <p>যেকোনো মুহূর্তে বাংলা থেকে ইংরেজি কিংবা ইংরেজি থেকে বাংলায় এক ক্লিকে পুরো সাইট (টেক্সট, বাটন, কার্ট, কারেন্সি) রূপান্তর করা যায়।</p>
+        </div>
+        <div class="card highlight">
+            <h4>📱 মোবাইল ও সব ডিভাইসে রেসপনসিভনেস</h4>
+            <p>ডেস্কটপ, ল্যাপটপ, ট্যাবলেট এবং যেকোনো আকারের স্মার্টফোনে (375px+) গ্রিড লেআউট স্বয়ংক্রিয়ভাবে মানিয়ে যায়। কোনো টেক্সট বা ছবি ওভারল্যাপ হয় না।</p>
+        </div>
+        <div class="card highlight">
+            <h4>🛡️ শক্তিশালী অ্যাডমিন ও ভেন্ডর নিরাপত্তা</h4>
+            <p>ভেন্ডররা কখনো মূল সাইটের অ্যাট্রিবিউট/ইউনিট পরিবর্তন করতে পারবে না। শুধুমাত্র সুপার অ্যাডমিন থেকে সব নিয়ন্ত্রণ ও অনুমোদন সম্পন্ন হয়।</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- PART 1: FRONTEND & CUSTOMER EXPERIENCE -->
+    <h1 class="section-title">২. ফ্রন্টএন্ড ও কাস্টমার এক্সপেরিয়েন্স (Storefront & UX)</h1>
+    <p>গ্রাহকদের জন্য অত্যন্ত আকর্ষণীয়, আধুনিক ও ইউজার-ফ্রেন্ডলি শপিং অভিজ্ঞতা নিশ্চিত করা হয়েছে:</p>
+
+    <h2 class="part-title">ক. হেডার, ন্যাভিগেশন ও গ্লোবাল সার্চ</h2>
+    <ul>
+        <li><strong>টপ অ্যানাউন্সমেন্ট বার:</strong> সারাদেশের জন্য ফ্রি ডেলিভারি অফার (৳ ৩,০০০+) এবং সার্বক্ষণিক কাস্টমার সাপোর্ট হটলাইন নম্বর।</li>
+        <li><strong>ইনস্ট্যান্ট ল্যাঙ্গুয়েজ সুইচ পিল:</strong> হেডারের ডানপাশে <code>[বাংলা | English]</code> সুইচ বাটন যা লোকাল স্টোরেজে স্টেট সংরক্ষণ করে।</li>
+        <li><strong>অর্গানিক ব্র্যান্ড লোগো:</strong> সবুজ পাহাড়ি চূড়া ও চা পাতার প্রতীকী লোগো এবং ব্র্যান্ড নাম "অর্গানিক বাজার চাই"।</li>
+        <li><strong>লাইভ সার্চ ইঞ্জিন:</strong> মধু, জুমের চাল, পাহাড়ি ফলমূল, বাঁশের পণ্য ইত্যাদি কি-ওয়ার্ড দিয়ে মুহূর্তেই পণ্য খোঁজার সুবিধা।</li>
+        <li><strong>ইউজার অ্যাকশন ও মোবাইল ড্রয়ার:</strong> উইশলিস্ট কাউন্টার, কার্ট ব্যাজ, ভেন্ডর হওয়ার লিঙ্ক এবং মোবাইলের জন্য ফুল-স্ক্রিন হ্যামবার্গার মেনু।</li>
+    </ul>
+
+    <h2 class="part-title">খ. ডাইনামিক ৪-সেকেন্ড হিরো ব্যানার স্লাইডার (Hero Slider)</h2>
+    <div class="card-grid avoid-break">
+        <div class="card">
+            <h4>স্মুথ অটো-ট্রানজিশন</h4>
+            <p>প্রতি ৪ সেকেন্ড পর পর স্মুথ অ্যানিমেশনের মাধ্যমে স্লাইড স্বয়ংক্রিয়ভাবে পরিবর্তিত হয়। পাশাপাশি ম্যানুয়াল অ্যারো ও ডট কন্ট্রোল রয়েছে।</p>
+        </div>
+        <div class="card">
+            <h4>সম্পূর্ণ ড্যাশবোর্ড নিয়ন্ত্রিত</h4>
+            <p>সুপার অ্যাডমিন ড্যাশবোর্ড থেকে ইচ্ছামতো স্লাইড যোগ, পরিবর্তন, ড্র্যাগ-অ্যান্ড-ড্রপ পুনর্বিন্যাস ও ডিলিট করা যায়।</p>
+        </div>
+        <div class="card">
+            <h4>দ্বিভাষিক কনটেন্ট প্রদর্শন</h4>
+            <p>প্রতিটি স্লাইডের মূল শিরোনাম, সাবটাইটেল এবং অ্যাকশন বাটন বাংলা ও ইংরেজি উভয় ভাষায় আলাদাভাবে প্রদর্শিত হয়।</p>
+        </div>
+        <div class="card">
+            <h4>বর্তমান স্লাইডার ডাটা</h4>
+            <p>১. রাজউক কাঁচাবাজার (পূর্বাচল ফ্রেশ প্রকল্প)<br>২. পাহাড়ি বাজার (Hill Market)<br>৩. বাঁশ ও বেতের হস্তশিল্প<br>৪. ঐতিহ্যবাহী পাহাড়ি তাঁতবস্ত্র</p>
+        </div>
+    </div>
+
+    <h2 class="part-title">গ. ট্রাস্ট ব্যাজ ও কোর ভ্যালু প্রোপজিশন</h2>
+    <table class="avoid-break">
+        <thead>
+            <tr>
+                <th>ফিচার</th>
+                <th>বাংলা বিবরণ</th>
+                <th>English Translation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>১০০% খাঁটি ও অর্গানিক</strong></td>
+                <td>সরাসরি পাহাড়ি ও স্থানীয় কৃষকের উৎপাদিত রাসায়নিকমুক্ত পণ্য</td>
+                <td>100% Pure & Organic farm harvests</td>
+            </tr>
+            <tr>
+                <td><strong>ন্যায্য বাণিজ্য (Fair Trade)</strong></td>
+                <td>কৃষক ও কারিগরদের সরাসরি ন্যায্য মূল্য প্রদান</td>
+                <td>Fair wages paid directly to producers</td>
+            </tr>
+            <tr>
+                <td><strong>দেশজুড়ে ডেলিভারি</strong></td>
+                <td>৬৪ জেলায় দ্রুত ও নিরাপদ হোম ডেলিভারি</td>
+                <td>Fast & secure home delivery in 64 districts</td>
+            </tr>
+            <tr>
+                <td><strong>সত্যতার শতভাগ নিশ্চয়তা</strong></td>
+                <td>প্রতিটি পণ্যের গুণগত মান পরীক্ষিত ও প্রমাণিত</td>
+                <td>100% Authenticity Guarantee</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="part-title">ঘ. শপিং কার্ট ড্রয়ার ও চেকআউট ফ্লো</h2>
+    <ul>
+        <li><strong>স্লাইড-ওভার কার্ট ড্রয়ার:</strong> যেকোনো পেজ থেকে স্ক্রিনের ডান পাশ দিয়ে স্মুথলি কার্ট ড্রয়ার ওপেন হয়।</li>
+        <li><strong>ফ্রি ডেলিভারি প্রোগ্রেস বার:</strong> ৩,০০০ টাকার পণ্য অর্ডারে ফ্রি ডেলিভারির লাইভ পার্সেন্টেজ ও রিমেইনিং অ্যামাউন্ট ক্যালকুলেশন।</li>
+        <li><strong>মাল্টি-ভেরিয়েন্ট আইটেম:</strong> পণ্যের সাইজ, রং ও ওজন কার্ট ড্রয়ারে পরিষ্কারভাবে প্রদর্শিত হয়।</li>
+        <li><strong>৪-ধাপের নিরাপদ চেকআউট:</strong> গ্রাহকের নাম, ফোন, জেলা/উপজেলা নির্বাচন, ডেলিভারি মেথড এবং ক্যাশ অন ডেলিভারি, বিকাশ, নগদ ও রকেটের মাধ্যমে অর্ডার সম্পন্ন করার ব্যবস্থা।</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- PART 2: ADMIN & VENDOR DASHBOARD -->
+    <h1 class="section-title">৩. সুপার অ্যাডমিন ও ভেন্ডর নিয়ন্ত্রণ ব্যবস্থা (Control Center)</h1>
+    <p>সিস্টেমে অ্যাডমিনের জন্য রয়েছে কেন্দ্রীভূত নিয়ন্ত্রণ ক্ষমতা এবং অনুমোদিত ভেন্ডরদের জন্য রয়েছে পণ্য আপলোড ও বিক্রয় ব্যবস্থাপনার বিশেষ পোর্টাল।</p>
+
+    <h2 class="part-title">ক. অ্যাডমিন - Attribute ও Unit ম্যানেজমেন্ট স্টুডিও</h2>
+    <p>ভেন্ডররা কখনোই নিজে থেকে কোনো Attribute বা Unit তৈরি করতে পারবে না। শুধুমাত্র অ্যাডমিন এটি সেন্ট্রালি নিয়ন্ত্রণ করে।</p>
+
+    <table class="avoid-break">
+        <thead>
+            <tr>
+                <th>গ্রুপ</th>
+                <th>ইউনিটের তালিকা (Units)</th>
+                <th>অ্যাট্রিবিউট ও অনুমোদিত মান (Values)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ওজন (Weight)</strong></td>
+                <td>গ্রাম (g), কেজি (kg)</td>
+                <td>২৫০g, ৫০০g, ১kg, ২kg, ৫kg</td>
+            </tr>
+            <tr>
+                <td><strong>তরল (Liquid)</strong></td>
+                <td>মিলি (ml), লিটার (L)</td>
+                <td>১০০ml, ২৫০ml, ৫০০ml, ১L, ৫L</td>
+            </tr>
+            <tr>
+                <td><strong>গণনা (Count)</strong></td>
+                <td>পিস, ডজন, হালি (৪ পিস), জোড়া, সেট, প্যাকেট, বক্স, বোতল, জার</td>
+                <td>১ পিস, ১ ডজন, ১ হালি, ১ জোড়া, ১ বক্স</td>
+            </tr>
+            <tr>
+                <td><strong>দৈর্ঘ্য (Length)</strong></td>
+                <td>ইঞ্চি, ফুট, মিটার, গজ</td>
+                <td>পোশাকের মাপ: XS, S, M, L, XL, XXL, Free Size</td>
+            </tr>
+            <tr>
+                <td><strong>রং (Color)</strong></td>
+                <td>—</td>
+                <td>লাল, নীল, সবুজ, কালো, সাদা, হলুদ, গোলাপি, খাকি, বাদামি</td>
+            </tr>
+            <tr>
+                <td><strong>উপাদান (Material)</strong></td>
+                <td>—</td>
+                <td>পাহাড়ি বাঁশ, প্রাকৃতিক বেত, সুতি তুলা, কাঠ, পোড়ামাটি</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="card-grid avoid-break">
+        <div class="card">
+            <h4>ক্যাটাগরি-অ্যাট্রিবিউট ম্যাপিং</h4>
+            <p>কোন ক্যাটাগরিতে কোন কোন অ্যাট্রিবিউট কার্যকর হবে তা অ্যাডমিন টিক দিয়ে সক্রিয় করতে পারেন (যেমন: মধুতে শুধু ওজন ও ভলিউম, পোশাকে সাইজ ও কালার)।</p>
+        </div>
+        <div class="card">
+            <h4>ভেন্ডর অ্যাট্রিবিউট রিকোয়েস্ট হাব</h4>
+            <p>ভেন্ডরের নতুন কোনো সাইজ বা ইউনিটের প্রয়োজন হলে ড্যাশবোর্ড থেকে রিকোয়েস্ট পাঠাবে। অ্যাডমিন অনুমোদন দিলেই কেবল তা সাইটে কার্যকর হবে।</p>
+        </div>
+    </div>
+
+    <h2 class="part-title">খ. হিরো স্লাইডার ও ব্যানার ম্যানেজমেন্ট স্টুডিও</h2>
+    <ul>
+        <li><strong>সরাসরি ড্রপজোন ইমেজ আপলোড:</strong> অ্যাডমিন যেকোনো নতুন ব্যানার ছবি আপলোড করতে পারেন যা স্বয়ংক্রিয়ভাবে সার্ভারের <code>public/uploads/hero/</code> ফোল্ডারে সংরক্ষিত হয়।</li>
+        <li><strong>বাংলা ও ইংরেজি কন্টেন্ট ফিল্ড:</strong> বাংলা শিরোনাম, ইংরেজি শিরোনাম, সাবটাইটেল এবং বাটন টেক্সট আলাদা ফিল্ডে ইনপুট নেওয়ার ব্যবস্থা।</li>
+        <li><strong>লাইভ প্রিভিউ ও অর্ডার পরিবর্তন:</strong> স্লাইডের ক্রমানুসারে অর্ডার সেট করা এবং অপ্রয়োজনীয় স্লাইড মুছে ফেলার সুবিধা।</li>
+    </ul>
+
+    <h2 class="part-title">গ. ক্যাটাগরি হাব ও সেফটি গার্ড (Category Safety Guard)</h2>
+    <ul>
+        <li><strong>ফুল ক্যাটাগরি CRUD:</strong> ক্যাটাগরির নাম, আইকন, কভার ফটো, ব্যানার এবং সাব-ক্যাটাগরি যোগ ও পরিবর্তনের সুবিধা।</li>
+        <li><strong>ডিলিট সেফটি গার্ড (Safety Delete Guard):</strong> কোনো ক্যাটাগরির অধীনে সক্রিয় পণ্য থাকা অবস্থায় ভুলবশত ডিলিট বাটনে চাপলে সিস্টেম তা স্বয়ংক্রিয়ভাবে ব্লক করে ওয়ার্নিং প্রদর্শন করে।</li>
+    </ul>
+
+    <h2 class="part-title">ঘ. ভেন্ডর আবেদন যাচাই ও আর্থিক পে-আউট</h2>
+    <ul>
+        <li><strong>ভেন্ডর অনবোর্ডিং:</strong> এনআইডি কার্ড, খামার/দোকানের ছবি, কারিগর সংখ্যা ও পেমেন্ট নম্বর যাচাই করে অ্যাডমিন অনুমোদন দেন।</li>
+        <li><strong>কমিশন সিস্টেম:</strong> মার্কেটপ্লেস কমিশন পার্সেন্টেজ সেন্ট্রালি নির্ধারণ করার ব্যবস্থা।</li>
+        <li><strong>আর্থিক উইথড্রয়াল প্রসেসিং:</strong> ভেন্ডরদের ওয়ালেট ব্যালেন্সের উইথড্রয়াল রিকোয়েস্ট যাচাই করে পেমেন্ট ক্লিয়ারেন্স প্রদান।</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- PART 3: ARCHITECTURE & TECHNICAL SPECIFICATION -->
+    <h1 class="section-title">৪. টেকনোলজি আর্কিটেকচার ও পারফরম্যান্স (Tech Stack)</h1>
+    <p>সিস্টেমের দীর্ঘমেয়াদি স্থায়িত্ব, সাইবার নিরাপত্তা ও উচ্চগতির কথা বিবেচনা করে আধুনিকতম টেকনোলজি স্ট্যাক ব্যবহার করা হয়েছে:</p>
+
+    <table class="avoid-break">
+        <thead>
+            <tr>
+                <th>লেয়ার (Layer)</th>
+                <th>ব্যবহৃত প্রযুক্তি</th>
+                <th>সুবিধা ও পারফরম্যান্স প্রভাব</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Backend Framework</strong></td>
+                <td>Laravel 12 (PHP 8.2+)</td>
+                <td>উচ্চ পারফরম্যান্স, সিকিউর সেশন, রোল বেসড অ্যাকসেস ও শক্তিশালী ORM।</td>
+            </tr>
+            <tr>
+                <td><strong>Frontend Core</strong></td>
+                <td>React 19 + Inertia.js</td>
+                <td>সিঙ্গেল পেজ অ্যাপ্লিকেশন (SPA) স্পিড, নো ফুল পেজ রিলোড, এসইও ফ্রেন্ডলি।</td>
+            </tr>
+            <tr>
+                <td><strong>Styling & Design System</strong></td>
+                <td>Tailwind CSS v4</td>
+                <td>কাস্টম অর্গানিক কালার প্যালেট (ফরেস্ট ডিপ, আইভরি, ট্যারাকোটা) ও জিরো সিএসএস ব্লোট।</td>
+            </tr>
+            <tr>
+                <td><strong>Internationalization (i18n)</strong></td>
+                <td>React Context API</td>
+                <td>কোনো রিফ্রেশ ছাড়া বাংলা ও ইংরেজির মধ্যে মিলিসেকেন্ডে ইনস্ট্যান্ট সুইচিং।</td>
+            </tr>
+            <tr>
+                <td><strong>Iconography</strong></td>
+                <td>Lucide React Icons</td>
+                <td>সব ডিভাইসে স্কেলেবল, ঝকঝকে ও লাইটওয়েট ভেক্টর আইকন সেট।</td>
+            </tr>
+            <tr>
+                <td><strong>Build & Bundling</strong></td>
+                <td>Vite 8.3 (Rollup Engine)</td>
+                <td>সুপারফাস্ট HMR ডেভেলপমেন্ট ও অপ্টিমাইজড প্রোডাকশন অ্যাসেট বান্ডলিং।</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="part-title">কোর ফিচার চেকলিস্ট ও স্ট্যাটাস</h2>
+    <div class="card-grid avoid-break">
+        <div class="card">
+            <h4>✅ ১০০% প্রস্তুত ফ্রন্টএন্ড ফিচারসমূহ</h4>
+            <ul>
+                <li>নতুন ব্র্যান্ড লোগো "অর্গানিক বাজার চাই"</li>
+                <li>৪ সেকেন্ডের ডায়নামিক হিরো ব্যানার স্লাইডার</li>
+                <li>বাংলা ও ইংরেজি সম্পূর্ণ দ্বিভাষিক মোড</li>
+                <li>মোবাইল, ট্যাবলেট ও ডেস্কটপে ফুল রেসপনসিভ</li>
+                <li>ইন্টারেক্টিভ স্লাইড-ওভার কার্ট ড্রয়ার</li>
+                <li>জেলা ও কারিগর ভিত্তিক শপ ফিল্টারিং</li>
+                <li>বিকাশ, নগদ, রকেট ও সিওডি চেকআউট</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h4>✅ ১০০% প্রস্তুত ব্যাকএন্ড ও অ্যাডমিন ফিচারসমূহ</h4>
+            <ul>
+                <li>অ্যাডমিন সেন্ট্রাল Unit ও Attribute ম্যানেজমেন্ট</li>
+                <li>ক্যাটাগরি-অ্যাট্রিবিউট ডাইনামিক ম্যাপিং</li>
+                <li>ভেন্ডর অ্যাট্রিবিউট রিকোয়েস্ট অনুমোদন ব্যবস্থা</li>
+                <li>হিরো স্লাইডার আপলোড ও কন্ট্রোল স্টুডিও</li>
+                <li>ক্যাটাগরি হাব উইথ ডিলিট সেফটি গার্ড</li>
+                <li>ভেন্ডর অনবোর্ডিং ও এনআইডি ভেরিফিকেশন</li>
+                <li>ওয়ালেট ব্যালেন্স ও আর্থিক পে-আউট অনুমোদন</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <strong>অর্গানিক বাজার চাই (Organic Bazar Chai)</strong> — সম্পূর্ণ সিস্টেম সফলভাবে ডেভেলপ ও টেস্ট করা হয়েছে। এটি যেকোনো পরিবেশ ও লাইভ সার্ভারে ডিপ্লয়মেন্টের জন্য শতভাগ প্রস্তুত।
+    </div>
+
+</body>
+</html>

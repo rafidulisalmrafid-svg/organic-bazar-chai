@@ -1,12 +1,3 @@
-# Stage 1: Build Frontend Assets
-FROM node:20-alpine AS frontend-builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# Stage 2: PHP Application with Apache
 FROM php:8.2-apache
 
 # Install system dependencies & PHP extensions
@@ -36,11 +27,8 @@ COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy application files
+# Copy application files (including pre-built assets in public/build)
 COPY . .
-
-# Copy built frontend assets from Stage 1
-COPY --from=frontend-builder /app/public/build ./public/build
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction

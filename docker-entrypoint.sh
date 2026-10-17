@@ -21,6 +21,11 @@ if [ ! -f /var/www/html/database/database.sqlite ]; then
 fi
 
 # Set proper ownership and permissions
+chmod 1777 /tmp
+mkdir -p /var/www/html/storage/framework/cache/tmp
+chmod -R 777 /var/www/html/storage/framework/cache/tmp
+export TMPDIR=/tmp
+
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database /var/www/html/public/uploads
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database /var/www/html/public/uploads
 chmod 664 /var/www/html/database/database.sqlite 2>/dev/null || true

@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_sqlite zip bcmath opcache \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && chmod 1777 /tmp
 
 # Configure Apache DocumentRoot to public
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
